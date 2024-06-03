@@ -31,7 +31,7 @@ Two parts however, required **laser cutting**. The front cover of the signal LED
 
 To make the carousel move in a robust way, a small metal rod is used as a connection to a ball bearing mounted to the base part.
 
-All fusion files and svgs can be found in `fabrication/`.
+All fusion files and svgs can be found in `schematics/`.
 
 ## Hardware
 
