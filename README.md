@@ -25,9 +25,11 @@ To test all functions, a test mode can be activated by pressing the button 3 tim
 
 ## Fabrication
 
-Most parts were 3d printed because of the possibility to create a nice and rounded appearance and a lot of flexibility for mounting parts on the inside using only screws. These parts only required minimal support structures and minimal infill to reduce weight and material usage. 
+Most parts were 3d printed because of the possibility to create a nice and rounded appearance and a lot of flexibility for mounting parts on the inside using only screws. These parts only required minimal support structures and minimal infill to reduce weight and material usage.
 
 Two parts however, required laser cutting. The front cover of the signal LED has a opaque, clean acrylic cover for a pleasing glowing effect. The removable cover on the top is transparent acrylic with the the week days engraved onto the surface. This way the contents of the dispenser can be easily checked and kept an overview of.
+
+To make the carousel move in a robust way, a small metal rod is used as a connection to a ball bearing mounted to the base part.
 
 All fusion files and svgs can be found in `fabrication/`.
 
