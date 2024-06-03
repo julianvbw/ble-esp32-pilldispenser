@@ -25,8 +25,12 @@ On the topmost Appbar the device name will be shown after connection. On the top
 
 The flipcard in the center of the screen shows a 3D render of the pill dispenser and will flip and show the current turning- and battery-status of the device. 
 
-![Screenshot of the flip card front side](screenshots/homescreen-frontside.png "Frontside of the flip card")
-![Screenshot of the flip card back side](screenshots/homescreen-backside.png "Backside of the flip card")
+<div class="row">
+<figure>
+  <img src="screenshots/homescreen-frontside.png" alt="Frontside of the flip card" style="width:25%">
+  <img src="screenshots/homescreen-backside.png" alt="Backside of the flip card" style="width:25%">
+</figure> 
+</div>
 
 Additionally there is an option to rename the device (Utf-8 compatible, so most international symbols and emojis are supported).
 
@@ -37,7 +41,9 @@ The _Alarm sound_ enables the beeping tone that is played at the wakeup time. Th
 
 _Turn automatically_ enables automatic turning and therefore dispensing of a pill at wakeup. _Block for 16h_ is independent of _Enable alarm_ and will block the dispensing function for a limited time of 16h. This could be practical for avoiding high doses of medicine or supplements.
 
-![Screenshot of the options](screenshots/settings.png "Settings")
+<figure>
+  <img src="screenshots/settings.png" alt="Screenshot of the options" style="width:25%">
+</figure>
 
 *Note*: Every option you see is live synced from and to the device, so animations might be slightly delayed and not as pretty.
 
