@@ -10,6 +10,8 @@ Install the app on your android phone from the release section on the right or
 
 Build the app by yourself using `flutter build apk --split-per-abi`
 
+**Give the app all neccessary permissions otherwise it will not find any device**
+
 
 NOTE: Most modern android phones today use the arm64 abi, so choose that version preferably.
 
