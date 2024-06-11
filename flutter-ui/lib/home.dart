@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:based_battery_indicator/based_battery_indicator.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:pill_dispenser/options.dart';
 import 'package:pill_dispenser/devicedata.dart';
 import 'package:flip_card/flip_card.dart';
@@ -97,9 +99,17 @@ class _HomeState extends State<Home> {
     // Future.delayed(const Duration(seconds: 3), () {setState(() { _connected = true; });});
 
     context.loaderOverlay.show();
-    _scanSub =
-        _ble.scanForDevices(withServices: [Uuid.parse(Constants.pollUuid)])
-            .listen(_onScanUpdate);
+    requestBluetoothPermission();
+  }
+
+  void requestBluetoothPermission() async {
+    PermissionStatus bScanStatus = await Permission.bluetoothScan.request();
+
+    if (bScanStatus.isGranted) {
+      _scanSub =
+          _ble.scanForDevices(withServices: [Uuid.parse(Constants.pollUuid)])
+              .listen(_onScanUpdate);
+    } else { }
   }
 
   void _onScanUpdate(DiscoveredDevice d) {
