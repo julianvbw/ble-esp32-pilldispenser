@@ -48,7 +48,6 @@ class _OptionsWidget extends State<OptionsWidget> {
   @override
   Widget build(BuildContext context) {
     final ColorScheme colors = Theme.of(context).colorScheme;
-    final TextTheme texts = Theme.of(context).textTheme;
 
     final MaterialStateProperty<Icon?> volIcon =
     MaterialStateProperty.resolveWith<Icon?>(

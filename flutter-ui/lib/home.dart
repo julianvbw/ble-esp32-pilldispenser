@@ -34,7 +34,6 @@ class _HomeState extends State<Home> {
   List<StreamSubscription<List<int>>> _subs = [];
   List<DiscoveredDevice> _foundDevices = [];
   bool _connected = false;
-  OverlayEntry? _loadingOverlayEntry;
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = new GlobalKey<
       RefreshIndicatorState>();
@@ -71,6 +70,32 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    // debug and showcase
+    // Future.delayed(const Duration(seconds: 3), () {setState(() {
+    //   _connected = true;
+    //   Future.delayed(const Duration(milliseconds: 800), () {
+    //     setState(() {
+    //       cardKey.currentState?.toggleCard();
+    //     });
+    //   });
+    //   context.loaderOverlay.hide();
+    //   Future.delayed(const Duration(milliseconds: 100), () {
+    //     setState(() {
+    //       data = DeviceData(
+    //           "BLE Pill Dispenser",
+    //           900,
+    //           56,
+    //           false,
+    //           true,
+    //           true,
+    //           false,
+    //           true,
+    //           false);
+    //     });
+    //   });
+    // });});
+    // Future.delayed(const Duration(seconds: 3), () {setState(() { _connected = true; });});
+
     context.loaderOverlay.show();
     _scanSub =
         _ble.scanForDevices(withServices: [Uuid.parse(Constants.pollUuid)])
