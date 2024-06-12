@@ -182,7 +182,7 @@ class _HomeState extends State<Home> {
         deviceId: deviceId,
         serviceId: serviceId,
         characteristicId: Uuid.parse(Constants.rotationUuid));
-    _subs.add(_ble.subscribeToCharacteristic(_rotationChar).listen((bytes) {
+    _subs.add(_ble.subscribeToCharacteristic(_rotationChar).listen((bytes) async {
       setState(() {
         controller.add(bytes[0]);
       });
@@ -224,10 +224,8 @@ class _HomeState extends State<Home> {
         data.options = bytes[0];
       });
     }));
-    Future.delayed(const Duration(milliseconds: 800), () {
-      setState(() {
-        cardKey.currentState?.toggleCard();
-      });
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      cardKey.currentState?.toggleCard();
     });
     context.loaderOverlay.hide();
   }
@@ -376,9 +374,9 @@ class _HomeState extends State<Home> {
                             borderColor: colors.background,
                             borderWidth: 4,
                           ),
-                          onAnimationStart: () {
-                            _ble.writeCharacteristicWithResponse(_rotationChar,
-                                value: Uint8List.fromList([1]));
+                          onFling: () async {
+                            _ble.writeCharacteristicWithoutResponse(_rotationChar,
+                                value: Uint8List.fromList([255]));
                           },
                           indicators: <FortuneIndicator>[
                             FortuneIndicator(
@@ -428,11 +426,11 @@ class _HomeState extends State<Home> {
                   alarm: data.alarm,
                   options: data.options,
                   onOptionsChanged: (int options) {
-                    _ble.writeCharacteristicWithResponse(_optionChar,
+                    _ble.writeCharacteristicWithoutResponse(_optionChar,
                         value: Int8List.fromList([options]));
                   },
                   onAlarmChanged: (int hour, int minute) {
-                    _ble.writeCharacteristicWithResponse(_alarmChar,
+                    _ble.writeCharacteristicWithoutResponse(_alarmChar,
                         value: Int8List.fromList([hour, minute]));
                   },
                 )
