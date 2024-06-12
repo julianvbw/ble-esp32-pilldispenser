@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:based_battery_indicator/based_battery_indicator.dart';
 import 'package:flutter/cupertino.dart';
@@ -104,8 +103,9 @@ class _HomeState extends State<Home> {
 
   void requestBluetoothPermission() async {
     PermissionStatus bScanStatus = await Permission.bluetoothScan.request();
+    PermissionStatus bConnStatus = await Permission.bluetoothConnect.request();
 
-    if (bScanStatus.isGranted) {
+    if (bScanStatus.isGranted && bConnStatus.isGranted) {
       _scanSub =
           _ble.scanForDevices(withServices: [Uuid.parse(Constants.pollUuid)])
               .listen(_onScanUpdate);
